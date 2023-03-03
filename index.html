@@ -38,28 +38,28 @@
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Name: </label>
           <div class="col-sm-10">
-            <input required name="name" type="text" class="form-control" placeholder="Name" />
+            <input required name="client_name" type="text" class="form-control" placeholder="Name" />
           </div>
         </div>
 
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">DNI: </label>
           <div class="col-sm-10">
-            <input required name="dni" maxlength="10" type="text" class="form-control" placeholder="DNI" />
+            <input required name="client_dni" maxlength="10" type="text" class="form-control" placeholder="DNI" />
           </div>
         </div>
 
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Address: </label>
           <div class="col-sm-10">
-            <input required name="address" type="text" class="form-control" placeholder="Address" />
+            <input required name="client_address" type="text" class="form-control" placeholder="Address" />
           </div>
         </div>
 
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Phone #: </label>
           <div class="col-sm-10">
-            <input required name="phone" type="text" class="form-control" placeholder="Phone" />
+            <input required name="client_phone" type="text" class="form-control" placeholder="Phone" />
           </div>
         </div>
 
@@ -81,7 +81,7 @@
                 <table id="sizes">
                   <template id="sizes-template">
                     <div class="form-check">
-                      <input value="{{_id}}" required name="size" class="form-check-input" type="radio" />
+                      <input value="{{_id}}" required name="size_id" class="form-check-input" type="radio" />
                       <label class="form-check-label" for="exampleRadios1"> {{name}} - ${{price}} </label>
                     </div>
                   </template>
@@ -139,7 +139,7 @@
     integrity="sha256-ILqMXUXPam8LdBwbq5W6r1m0NxeP8ydLFqrYN+bMCeI=" crossorigin="anonymous"></script>
 
   <script src="js/index.js" type="module"></script>
-  <script src="js/assets/header.js"></script>
+  <script src="js/common/header.js"></script>
   <script>
     fetchHeaderPage('/app/common/header.html')
   </script>
