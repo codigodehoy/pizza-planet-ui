@@ -1,5 +1,5 @@
 import { getData } from '../common/crud.js'
-import { endpointOrder } from './orders.js'
+import { ENDPOINT_ORDER } from './orders.js'
 
 let urlParams = new URLSearchParams(window.location.search);
 let _id = urlParams.get('_id');
@@ -9,7 +9,7 @@ let _id = urlParams.get('_id');
  * @param order
 */
 async function createRowTemplate() {
-    const order = await getData(`${endpointOrder}/id/${_id}`);
+    const order = await getData(`${ENDPOINT_ORDER}/id/${_id}`);
     let template = $("#order-template")[0].innerHTML;
     const rendered = Mustache.render(template, order);
     $("#order").append(rendered);
