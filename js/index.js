@@ -1,84 +1,28 @@
-import { insertDataToTable } from './assets/index.js'
+import { postData } from './common/crud.js'
+import { insertDataToTable } from './common/index.js'
+import { handleSubmitForm } from './common/formSubmit.js'
+import { ENDPOINT_BEVERAGE } from './beverage/beverage.js'
+import { ENDPOINT_INGREDIENT } from './ingredient/ingredient.js'
+import { ENDPOINT_SIZE } from './size/size.js'
 
-
+const ENDPOINT_ORDER = "order"
+const ORDER_FORM = $("#order-form");
 /**
  * POST the order on /pizza
  * @param order 
  */
 
-function postOrder(order) {
 
-    fetch('http://127.0.0.1:5000/order/', {
-        method: 'POST',
-        body: JSON.stringify(order),
-        headers: {
-            "Content-Type": "application/json; charset=utf-8",
-        },
-    })
-        .then(res => res.json())
-        .then(res => showNotification());
-
-
-}
-
-/**
- * Get the form and submit it with fetch API
- */
-let orderForm = $("#order-form");
-orderForm.submit(event => {
-
-    let order = getOrderData();
-    console.log(order)
-    // postOrder(order);
-
-    event.preventDefault();
-    event.currentTarget.reset();
+// Get the form and submit it with fetch API
+ORDER_FORM.submit((eventSubmit) => {
+    handleSubmitForm(eventSubmit, ORDER_FORM, `${ENDPOINT_ORDER}/create`, "#order-alert", postData)
 });
 
-function getData(name) {
-    let data = [];
-    $.each($(`input[name=${name}]:checked`), function (el) {
-        data.push($(this).val());
-    });
-    return data
-}
-
-/**
- * Gets the order data with JQuery
- */
-function getOrderData() {
-    const ingredients = getData("ingredients");
-    const beverages = getData("beverages");
-
-    return {
-        client_name: $("input[name='name']").val(),
-        client_dni: $("input[name='dni']").val(),
-        client_address: $("input[name='address']").val(),
-        client_phone: $("input[name='phone']").val(),
-        size_id: $("input[name='size']:checked").val(),
-        ingredients,
-        beverages
-    };
-}
-
-/**
- * Shows a notification when the order is accepted
- */
-function showNotification() {
-    let orderAlert = $("#order-alert");
-    orderAlert.toggle();
-    setTimeout(() => orderAlert.toggle(), 5000);
-}
-
-
 // Gather information in a dynamic way
-
-
 function loadInformation() {
-    insertDataToTable("ingredient", "#ingredients-template", "#ingredients");
-    insertDataToTable("size", "#sizes-template", "#sizes");
-    insertDataToTable("beverage", "#beverages-template", "#beverages")
+    insertDataToTable(ENDPOINT_INGREDIENT, "#ingredients-template", "#ingredients");
+    insertDataToTable(ENDPOINT_SIZE, "#sizes-template", "#sizes");
+    insertDataToTable(ENDPOINT_BEVERAGE, "#beverages-template", "#beverages")
 }
 
-
-window.onload = loadInformation;
+document.addEventListener("DOMContentLoaded", loadInformation);
