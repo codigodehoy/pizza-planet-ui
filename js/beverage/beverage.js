@@ -1,7 +1,9 @@
-import { insertDataToTable } from '../assets/index.js'
+import { insertDataToTable } from '../common/index.js'
 
-const endpointName = "beverage";
-const ingredientTemplate = "#beverage-item-template";
-const tableId = "#beverage";
+export const ENDPOINT_BEVERAGE = "beverage";
+export const BEVERAGE_FORM = $("#beverage-form");
+const BEVERAGE_TEMPLATE = "#beverage-item-template";
+const TABLE_ID = "#beverage";
 
-insertDataToTable(endpointName, ingredientTemplate, tableId);
+
+document.addEventListener('DOMContentLoaded', () => insertDataToTable(ENDPOINT_BEVERAGE, BEVERAGE_TEMPLATE, TABLE_ID));

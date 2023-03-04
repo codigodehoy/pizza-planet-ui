@@ -1,45 +1,8 @@
+import { postData } from '../common/crud.js'
+import { handleSubmitForm } from '../common/formSubmit.js'
+import { ENDPOINT_INGREDIENT, INGREDIENT_FORM } from './ingredient.js'
 
-async function postIngredient(ingredient) {
-    const response = await fetch('http://127.0.0.1:5000/ingredient/', {
-        method: 'POST',
-        body: JSON.stringify(ingredient),
-        headers: {
-            "Content-Type": "application/json; charset=utf-8",
-        },
-    })
-    return response; 
-}
-
-/**
- * Get the form and submit it with fetch API
- */
-const ingredientForm = $("#ingredient-form");
-
-ingredientForm.submit(async (event) => {
-    let ingredient = getIngredientData();
-    await postIngredient(ingredient);
-    event.preventDefault();
-    event.currentTarget.reset();
+// Call handleSubmitForm on form submit event
+INGREDIENT_FORM.submit((submitEvent) => {
+  handleSubmitForm(submitEvent, INGREDIENT_FORM, `${ENDPOINT_INGREDIENT}/create`, "#ingredient-alert", postData)
 });
-
-
-
-/**
- * Gets the order data with JQuery
- */
-function getIngredientData() {
-
-    return {
-        name: $("input[name='name']").val(),
-        price: $("input[name='price']").val(),
-    };
-}
-
-/**
- * Shows a notification when the order is accepted
- */
-function showNotification() {
-    let ingredientAlert = $("#ingredient-alert");
-    ingredientAlert.toggle();
-    setTimeout(() => ingredientAlert.toggle(), 5000);
-}

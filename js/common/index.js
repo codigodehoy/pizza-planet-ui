@@ -1,7 +1,7 @@
-import { get } from './crud.js'
+import { getData } from './crud.js'
 
 export async function insertDataToTable(endpointName, template, tableId) {
-  const data = await get(endpointName)
+  const data = await getData(endpointName)
   let rows = data.map(element => createTemplate(element, template));
   let table = $(`${tableId} tbody`);
   table.append(rows);
@@ -24,7 +24,7 @@ export async function loadInformation(urlSearch, idInput, nameInput, priceInput,
   try {
     const urlParams = new URLSearchParams(urlSearch);
     const _id = urlParams.get('_id');
-    const data = await get(`${endpoint}/id/${_id}`);
+    const data = await getData(`${endpoint}/id/${_id}`);
     idInput.val(data._id);
     nameInput.val(data.name);
     priceInput.val(data.price);

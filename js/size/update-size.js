@@ -1,4 +1,4 @@
-import { put } from '../common/crud.js'
+import { putData } from '../common/crud.js'
 import { loadInformation } from '../common/index.js'
 import { ENDPOINT_SIZE, SIZE_FORM } from './size.js'
 import { handleSubmitForm } from '../common/formSubmit.js'
@@ -9,7 +9,7 @@ const PRICE_INPUT = $("#price")
 
 //  Get the form and submit it with fetch API
 SIZE_FORM.submit((eventSubmit) => {
-    handleSubmitForm(eventSubmit, SIZE_FORM, `${ENDPOINT_SIZE}/update`, "#size-alert", put);
+    handleSubmitForm(eventSubmit, SIZE_FORM, `${ENDPOINT_SIZE}/update`, "#size-alert", putData);
 })
 
 document.addEventListener("DOMContentLoaded", () => {
