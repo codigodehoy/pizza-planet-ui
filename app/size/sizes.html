@@ -17,7 +17,7 @@
 <body>
   <!-- HEADER -->
   <header id="header"></header>
-
+  
   <!-- TABLE -->
   <div class="container">
     <div class="jumbotron">
@@ -49,7 +49,7 @@
       <td class="col-3">${{price}}</td>
       <td class="col-3 text-center">
         <div class="text-center">
-          <a class="btn btn-success btn-sm update-size disabled"
+          <a class="btn btn-success btn-sm update-size"
             href="/app/size/update-size.html?_id={{_id}}">Update</a>
         </div>
       </td>
@@ -71,7 +71,7 @@
     integrity="sha256-ILqMXUXPam8LdBwbq5W6r1m0NxeP8ydLFqrYN+bMCeI=" crossorigin="anonymous"></script>
 
   <script src="/js/size/size.js" type="module"></script>
-  <script src="/js/assets/header.js"></script>
+  <script src="/js/common/header.js"></script>
   <script>
     fetchHeaderPage('../common/header.html')
   </script>
