@@ -1,4 +1,4 @@
-import { put } from '../common/crud.js'
+import { putData } from '../common/crud.js'
 import { loadInformation } from '../common/index.js'
 import { ENDPOINT_BEVERAGE, BEVERAGE_FORM } from './beverage.js'
 import { handleSubmitForm } from '../common/formSubmit.js'
@@ -9,7 +9,7 @@ const PRICE_INPUT = $("#price")
 
 //  Get the form and submit it with fetch API
 BEVERAGE_FORM.submit((eventSubmit) => {
-    handleSubmitForm(eventSubmit, BEVERAGE_FORM, `${ENDPOINT_BEVERAGE}/update`, "#beverage-alert", put);
+    handleSubmitForm(eventSubmit, BEVERAGE_FORM, `${ENDPOINT_BEVERAGE}/update`, "#beverage-alert", putData);
 })
 
 document.addEventListener("DOMContentLoaded", () => {

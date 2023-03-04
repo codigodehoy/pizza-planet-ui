@@ -1,47 +1,8 @@
-function postSize(size) {
+import { postData } from '../common/crud.js'
+import { handleSubmitForm } from '../common/formSubmit.js'
+import { ENDPOINT_SIZE, SIZE_FORM } from './size.js'
 
-    fetch('http://127.0.0.1:5000/size/', {
-        method: 'POST',
-        body: JSON.stringify(size),
-        headers: {
-            "Content-Type": "application/json; charset=utf-8",
-        },
-    })
-        .then(res => res.json())
-        .then(res => showNotification());
-
-
-}
-
-/**
- * Get the form and submit it with fetch API
- */
-let sizeForm = $("#size-form");
-sizeForm.submit(event => {
-
-    let size = getSizeData();
-    postSize(size);
-
-    event.preventDefault();
-    event.currentTarget.reset();
+// Call handleSubmitForm on form submit event
+SIZE_FORM.submit((submitEvent) => {
+  handleSubmitForm(submitEvent, SIZE_FORM, `${ENDPOINT_SIZE}/create`, "#size-alert", postData)
 });
-
-/**
- * Gets the order data with JQuery
- */
-function getSizeData() {
-
-    return {
-        name: $("input[name='name']").val(),
-        price: $("input[name='price']").val(),
-    };
-}
-
-/**
- * Shows a notification when the order is accepted
- */
-function showNotification() {
-    let sizeAlert = $("#size-alert");
-    sizeAlert.toggle();
-    setTimeout(() => sizeAlert.toggle(), 5000);
-}
