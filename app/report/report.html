@@ -16,42 +16,13 @@
 
 <body>
   <!-- HEADER -->
-
-  <header class="header-section container-fluid">
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
-      <a class="navbar-brand" href="/">
-        <img src="/images/image4.png" width="50" height="50" class="d-inline-block align-top" alt="" />
-        L'ultima Cena
-      </a>
-      <ul class="navbar-nav mr-auto"></ul>
-      <ul class="navbar-nav">
-        <!-- LINKS -->
-
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Build Your Pizza!</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/app/order/orders.html">Orders</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/app/ingredient/ingredients.html">Ingredients</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/app/size/sizes.html">Sizes</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/app/beverage/beverage.html">Beverage</a>
-        </li>
-      </ul>
-    </nav>
-  </header>
+  <header id="header"></header>
 
   <!-- TABLE -->
-
   <div class="container">
     <div class="jumbotron">
       <div id="sizes-list">
-        <h2 class="text-center">Ingredient most requested</h2>
+        <h2 class="text-center">Most requested ingredients</h2>
         <table id="report-ingredient" class="table bg-white table-bordered table-hover">
           <thead class="thead-dark">
             <tr class="d-flex">
@@ -68,7 +39,7 @@
 
   <template id="report-ingredient-template">
     <tr class="d-flex">
-      <td class="col-4">{{name}}</td>
+      <td class="col-4">{{ingredient_name}}</td>
       <td class="col-4">${{price}}</td>
       <td class="col-4">{{sales}}</td>
     </tr>
@@ -94,7 +65,7 @@
   <template id="report-month-template">
     <tr class="d-flex">
       <td class="col-6 text-center">{{month}}</td>
-      <td class="col-6">${{sales}}</td>
+      <td class="col-6">${{total_sales}}</td>
     </tr>
   </template>
 
@@ -137,6 +108,10 @@
     integrity="sha256-ILqMXUXPam8LdBwbq5W6r1m0NxeP8ydLFqrYN+bMCeI=" crossorigin="anonymous"></script>
 
   <script src="/js/report/report.js" type="module"></script>
+  <script src="/js/common/header.js"></script>
+  <script>
+    fetchHeaderPage('../common/header.html')
+  </script>
 </body>
 
 </html>

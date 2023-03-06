@@ -1,8 +1,7 @@
-import { insertDataToTable } from '../assets/index.js'
+import { insertDataToTable } from '../common/index.js'
 
-const endpointName = "order";
+export const ENDPOINT_ORDER = "order";
 const ingredientTemplate = "#order-item-template";
 const tableId = "#orders";
 
-
-insertDataToTable(endpointName, ingredientTemplate, tableId);
+document.addEventListener("DOMContentLoaded", insertDataToTable(ENDPOINT_ORDER, ingredientTemplate, tableId));
